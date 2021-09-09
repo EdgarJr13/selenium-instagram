@@ -1,4 +1,5 @@
 from PySimpleGUI import PySimpleGUI as sg
+from bot import InstagramBot as ib
 
 # Layout
 sg.theme('Reddit')
@@ -16,6 +17,9 @@ janela = sg.Window('Login', layout)
 
 # Read events
 while True:
-    eventos, valores = janela.read()
-    if eventos == sg.WINDOW_CLOSED:
+    evento, valor = janela.read()
+    if evento == sg.WINDOW_CLOSED:
         break
+    if evento == 'Entrar':
+        run = ib('username', 'senha')
+        run.login()
